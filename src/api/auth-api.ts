@@ -2,52 +2,52 @@ import {instance} from './axios-instance'
 import axios, {AxiosResponse} from 'axios'
 
 // Requests
-export type LoginData = {
+export type LoginData = { // Login
     email: string,
     password: string,
     rememberMe: boolean
 }
 
-export type RegistrationsData = {
+export type RegistrationsData = { // Registartion
     email: string
     password: string
 }
 
-export type ChangeUsersInfoData = {
+export type ChangeUsersInfoData = { // changeUsersInfo
     name: string
     avatar: string
 }
 
-export type PasswordRecoveryData = {
+export type PasswordRecoveryData = { // passwordRecovery
     email: string,
     from: string,
     message: string
 }
 
-export type NewPasswordData = {
+export type NewPasswordData = { // newPassword
     password: string,
     resetPasswordToken: string | undefined
 }
 
 // Responses
-type LogoutResponse = {
+type LogoutResponse = { // logout
     info: string
     error?: string
 }
 
-export type UsersInfoResponse = {
+export type UsersInfoResponse = { // checkAuth -->  dispatch( 'K' AppRouter)     //login -->  'K' Header
     email: string
     name: string
     avatar?: string
     publicCardPacksCount: number
 }
 
-type UpdateUserResponse = {
+type UpdateUserResponse = {   // changeUsersInfo
     updatedUser: UsersInfoResponse
     error?: string
 }
 
-export type PasswordResponse = {
+export type PasswordResponse = {  // passwordRecovery          //newPassword
     info: string,
     error: string
 }

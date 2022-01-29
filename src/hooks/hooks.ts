@@ -81,18 +81,3 @@ export const useValidation = (value: string, validators: Validators) => {
         maxLength
     }
 }
- {/* {/* ///вывод ошибок оптимизировать: touch - т. е. ввошли в input и из него вышли (что б раньше времени не показывать error*/}
-//  export const NewApp: FC = () => {
-//     const email = useInputN('', { isEmpty: true, minLength: 8 })
-//     const password = useInputN('', { isEmpty: true, minLength: 5 })
-//     return (
-//        <div>
-//           <form>
-//              <h1>Registartor </h1>         
-//             ? {(email.touch && email.isEmpty) && <div style={{ color: 'red' }}> Pole ne pystoe </div>}
-//              {(email.touch && email.minLength) && <div style={{ color: 'red' }}> Pole ne pystoe </div>}
-//              <input value={email.value} onChange={email.onChange} type='text' />
-//              {(password.touch && password.isEmpty) && <div style={{ color: 'red' }}> Pole ne pystoe </div>}
-//              {(password.touch && password.minLength) && <div style={{ color: 'red' }}> Pole ne pystoe </div>}
-//              <input onBlur={password.onBlur} onChange={password.onChange} type='text' />
-//           </form> </div>  ) }
