@@ -32,8 +32,7 @@ export const Login: FC = () => {
             <form onSubmit={onSubmit}>
                 <label htmlFor='login-email'>
                     Email
-                    <Input 
-                        id={'login-email'}
+                    <Input id={'login-email'}
                         type={'email'}
                         placeholder={'Enter your email address...'}
                         value={values.email}

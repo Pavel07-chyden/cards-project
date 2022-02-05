@@ -5,6 +5,7 @@
     --secondary: indianred;
     --dark: #333;
     --light: whitesmoke;
+    --darkLight: #555;
 }
 
 * {
@@ -28,6 +29,7 @@ body {
     width: 1280px;
     margin-top: 72px;
     padding: 24px;
+    overflow-x: hidden
 }
 
 a {
@@ -39,6 +41,11 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     font-size: 48px;
+    margin: 40px 0;
+}
+
+h2 {
+    font-size: 32px;
     margin: 24px 0;
 }
 
@@ -79,13 +86,50 @@ button:disabled {
 input {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
+    outline: none;
     border: 2px solid var(--light);
     border-radius: 4px;
-    outline: none;
     height: 40px;
     padding: 8px;
 }
 
 input:focus {
     border-color: var(--primary);
+}
+
+select {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 40px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid var(--darkLight);
+}
+
+thead, tfoot {
+    background: var(--darkLight);
+}
+
+tr {
+}
+
+tr:hover {
+    background: var(--darkLight);
+}
+
+th, td {
+    padding: 8px;
+    position: relative;
+}
+
+.tablesButtonsCell {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }

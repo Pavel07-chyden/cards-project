@@ -8,10 +8,7 @@ import { useDispatch } from 'react-redux'
 import { registration } from '../../store/reducers/auth-reducer'
 import { setAppError } from '../../store/reducers/app-reducer'
 
-export const 
-
-
-Registration: FC = () => {
+export const Registration: FC = () => {
     const { registrationSuccess } = useTypedSelector(state => state.auth)
     const dispatch = useDispatch()
 
@@ -33,6 +30,7 @@ Registration: FC = () => {
     return (
         <div>
             <h1>Registration</h1>
+
             <form onSubmit={onSubmit}>
                 <label htmlFor={'registration-email'}>
                     Email

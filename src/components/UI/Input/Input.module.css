@@ -18,9 +18,13 @@
 }
 
 .eye {
-    color: var(--primary);
+    color: var(--dark);
     position: absolute;
-    right: 8px;
+    right: 16px;
     top: 8px;
     cursor: pointer;
+}
+
+.eye:hover {
+    opacity: 0.8;
 }

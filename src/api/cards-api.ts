@@ -1,7 +1,7 @@
 import {instance} from './axios-instance'
 import {AxiosResponse} from 'axios'
 
-export type Card = {  // post   put  delete   createCard, updateCard, deleteCard
+export type Card = {
     answer: string
     question: string
     cardsPack_id: string
@@ -16,7 +16,7 @@ export type Card = {  // post   put  delete   createCard, updateCard, deleteCard
     _id: string
 }
 
-export type CardsResponse = { // --- get  getCards'
+export type CardsResponse = {
     cards: Card[]
     cardsTotalCount: number
     maxGrade: number
@@ -26,7 +26,7 @@ export type CardsResponse = { // --- get  getCards'
     packUserId: string
 }
 
-export type GetCardsQueryParams = { // getCards   <--->
+export type GetCardsQueryParams = {
     cardsPack_id?: string
     cardAnswer?: string
     cardQuestion?: string
@@ -37,7 +37,7 @@ export type GetCardsQueryParams = { // getCards   <--->
     pageCount?: number
 }
 
-export type NewCardData = {  //  post          createCard
+export type NewCardData = {
     card: {
         cardsPack_id: string
         question?: string
@@ -53,7 +53,7 @@ export type NewCardData = {  //  post          createCard
     }
 }
 
-export type UpdateCardData = {  //updateCard
+export type UpdateCardData = {
     card: {
         _id: string
         question?: string
@@ -61,16 +61,16 @@ export type UpdateCardData = {  //updateCard
     }
 }
 
-export type DeleteCardData = {  //deleteCard
+export type DeleteCardData = {
     id: string
 }
 
-export type GradeData = {  //    grade
+export type GradeData = {
     card_id: string
     grade: number
 }
 
-export type GradeResponse = { // put GradeData
+export type GradeResponse = {
     _id: string
     cardsPack_id: string
     card_id: string

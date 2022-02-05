@@ -13,7 +13,7 @@ enum AUTH_ACTIONS_TYPES {
     SEND_RECOVERY_EMAIL_SUCCESS = 'AUTH/SEND_RECOVERY_EMAIL_SUCCESS',
 }
 
-export type AuthActions =
+type AuthActions =
     | ReturnType<typeof setRegistrationSuccess>
     | ReturnType<typeof setUsersInfo>
     | ReturnType<typeof setIsLoggedIn>
@@ -95,7 +95,6 @@ export const setSendEmailSuccess = (successSend: boolean) => ({
 } as const)
 
 export const registration = (registrationsData: RegistrationsData) => async (dispatch: AppDispatch) => {
-    debugger
     try {
         dispatch(setAppIsLoading(true))
         await authAPI.registration(registrationsData)
@@ -129,9 +128,8 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
         const response = await authAPI.checkAuth()
         dispatch(setUsersInfo(response.data))
         dispatch(setIsLoggedIn(true))
-        dispatch(setAppInfo(`Hello, dear ${response.data.name}!`))
     } catch (e) {
-        errorsHandler(e, dispatch)
+        errorsHandler('', dispatch)
     } finally {
         dispatch(setAppIsLoading(false))
         dispatch(setAppInitialized(true))
@@ -139,7 +137,6 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
 }
 
 export const changeUsersInfo = (info: ChangeUsersInfoData) => async (dispatch: AppDispatch) => {
-    debugger
     try {
         dispatch(setAppIsLoading(true))
         const response = await authAPI.changeUsersInfo(info)

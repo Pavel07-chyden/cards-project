@@ -1,127 +1,46 @@
-import React, { FC, FormEvent, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTypedSelector } from '../../hooks/hooks'
 import { useDispatch } from 'react-redux'
 import { changeUsersInfo, checkAuth } from '../../store/reducers/auth-reducer'
 import { Redirect } from 'react-router-dom'
 import { PATH } from '../../routes/routes'
+import { EditableElement } from '../../components/UI/EditableElement/EditableElement'
+import s from './Profile.module.css'
 
 export const Profile: FC = () => {
     const isLoggedIn = useTypedSelector(state => state.auth.isLoggedIn)
     const { userInfo } = useTypedSelector(state => state.auth)
     const dispatch = useDispatch()
 
-    const [newName, setNewName] = useState('')
-    const [newAvatar, setNewAvatar] = useState('')
+    const onNameChangeHandler = (name: string) => dispatch(changeUsersInfo({ name }))
+    const onAvatarChangeHandler = (avatar: string) => dispatch(changeUsersInfo({ avatar }))
 
     useEffect(() => {
         dispatch(checkAuth())
     }, [dispatch])
 
-    const onSubmitHandler = (e: FormEvent) => {
-        e.preventDefault()
-        dispatch(changeUsersInfo({ name: newName, avatar: newAvatar }))
-    }
     if (!isLoggedIn) return <Redirect to={PATH.LOGIN} />
-
 
     return (
         <div>
-            {userInfo && <div>
-                <img src={userInfo.avatar}
-                    alt={userInfo.name}
-                    style={{ maxHeight: 400 }} />
-                <div>{userInfo.name}</div>
-                <div>{userInfo.publicCardPacksCount}</div>
-                <div>
-                    <input type='text' placeholder={'New Name'} 
-                    value={newName}
-                        onChange={e => setNewName(e.currentTarget.value)} />
+            <h1>Profile</h1>
 
-                    <input type='text' placeholder={'New Avatar URL'} 
-                    value={newAvatar}
-                        onChange={e => setNewAvatar(e.currentTarget.value)} />
-                    <button onClick={onSubmitHandler}>Change info</button>
-                </div>
-            </div>}
+            {userInfo &&
+                <div className={s.container}>
+                    <EditableElement defaultValue={userInfo.avatar || ''}
+                        onEditHandler={onAvatarChangeHandler}>
+                        <img src={userInfo.avatar} alt={userInfo.name} className={s.avatar} />
+                    </EditableElement>
 
+                    <div className={s.infoContainer}>
+                        <EditableElement defaultValue={userInfo.name}
+                            onEditHandler={onNameChangeHandler}>
+                            <h2>{userInfo.name}</h2>
+                        </EditableElement>
+
+                        <div>Number of Card Packs: {userInfo.publicCardPacksCount}</div>
+                    </div>
+                </div>}
         </div>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const Profile: FC = () => {
-//     const isLoggedIn = useTypedSelector(state => state.auth.isLoggedIn)
-//     const { userInfo } = useTypedSelector(state => state.auth)
-//     const dispatch = useDispatch()
-
-//     const [newName, setNewName] = useState('')
-//     const [newAvatar, setNewAvatar] = useState('')
-
-//     useEffect(() => {
-//         dispatch(checkAuth())
-//     }, [dispatch])
-
-//     if (!isLoggedIn) return <Redirect to={PATH.LOGIN} />
-
-//     const onSubmitHandler = () => {
-//         dispatch(changeUsersInfo({ name: newName, avatar: newAvatar }))
-//     }
-
-//     return (
-//         <div>
-//             <h1>Profile</h1>
-
-//             {userInfo && <div>
-//                 <img src={userInfo.avatar}
-//                     alt={userInfo.name}
-//                     style={{ maxHeight: 400 }} />
-//                 <div>{userInfo.name}</div>
-//                 <div>{userInfo.publicCardPacksCount}</div>
-
-//                 <div>
-//                     <input type='text' placeholder={'New Name'} value={newName}
-//                         onChange={e => setNewName(e.currentTarget.value)} />
-
-//                     <input type='text' placeholder={'New Avatar URL'} value={newAvatar}
-//                         onChange={e => setNewAvatar(e.currentTarget.value)} />
-//                     <button onClick={onSubmitHandler}>Change info</button>
-//                 </div>
-//             </div>}
-//         </div>
-//     )
-// }

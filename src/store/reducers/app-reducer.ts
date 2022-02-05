@@ -5,7 +5,7 @@ enum APP_ACTIONS_TYPES {
     SET_APP_INFO = 'APP/SET_APP_INFO',
 }
 
-export type AppActions =
+type AppActions =
     | ReturnType<typeof setAppIsLoading>
     | ReturnType<typeof setAppError>
     | ReturnType<typeof setAppInitialized>

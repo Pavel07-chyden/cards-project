@@ -16,6 +16,8 @@ export const Header: FC = () => {
             <nav className={s.container}>
                 <Link to={PATH.HOME}><ReactIcon/></Link>
                 <NavLink activeClassName={s.active} to={PATH.PROFILE}>Profile</NavLink>
+                <NavLink activeClassName={s.active} to={PATH.PACKS}>Packs</NavLink>
+                <NavLink activeClassName={s.active} to={PATH.CARDS}>Cards</NavLink>
 
                 {!isLoggedIn
                     ? <NavLink activeClassName={s.active} to={PATH.LOGIN}>Login</NavLink>

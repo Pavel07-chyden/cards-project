@@ -1,58 +1,56 @@
 import {instance} from './axios-instance'
 import axios, {AxiosResponse} from 'axios'
 
-// Requests
-export type LoginData = { // Login
+export type LoginData = {
     email: string,
     password: string,
     rememberMe: boolean
 }
 
-export type RegistrationsData = { // Registartion
+export type RegistrationsData = {
     email: string
     password: string
 }
 
-export type ChangeUsersInfoData = { // changeUsersInfo
-    name: string
-    avatar: string
+export type ChangeUsersInfoData = {
+    name?: string
+    avatar?: string
 }
 
-export type PasswordRecoveryData = { // passwordRecovery
+export type PasswordRecoveryData = {
     email: string,
     from: string,
     message: string
 }
 
-export type NewPasswordData = { // newPassword
+export type NewPasswordData = {
     password: string,
     resetPasswordToken: string | undefined
 }
 
-// Responses
-type LogoutResponse = { // logout
+type LogoutResponse = {
     info: string
     error?: string
 }
 
-export type UsersInfoResponse = { // checkAuth -->  dispatch( 'K' AppRouter)     //login -->  'K' Header
+export type UsersInfoResponse = {
+    _id: string
     email: string
     name: string
     avatar?: string
     publicCardPacksCount: number
 }
 
-type UpdateUserResponse = {   // changeUsersInfo
+type UpdateUserResponse = {
     updatedUser: UsersInfoResponse
     error?: string
 }
 
-export type PasswordResponse = {  // passwordRecovery          //newPassword
+export type PasswordResponse = {
     info: string,
     error: string
 }
 
-// API
 export const authAPI = {
     registration: (payload: RegistrationsData) => instance
         .post<RegistrationsData, AxiosResponse<{ error?: string }>>('/auth/register', payload),
@@ -69,8 +67,8 @@ export const authAPI = {
     login: (payload: LoginData) => instance
         .post<LoginData, AxiosResponse<UsersInfoResponse>>(`/auth/login`, payload),
 
-    passwordRecovery: (payload: PasswordRecoveryData) => { return axios
-        .post<PasswordRecoveryData, AxiosResponse<PasswordResponse>>('https://neko-back.herokuapp.com/2.0/auth/forgot', payload)},
+    passwordRecovery: (payload: PasswordRecoveryData) => axios
+        .post<PasswordRecoveryData, AxiosResponse<PasswordResponse>>('https://neko-back.herokuapp.com/2.0/auth/forgot', payload),
 
     newPassword: (payload: NewPasswordData) => axios
         .post<NewPasswordData, AxiosResponse<PasswordResponse>>(`https://neko-back.herokuapp.com/2.0/auth/set-new-password`, payload)
