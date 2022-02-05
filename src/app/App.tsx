@@ -5,6 +5,9 @@ import {Header} from '../components/Header/Header'
 import {Provider} from 'react-redux'
 import {store} from '../store/store'
 import {Alerts} from '../components/UI/Alerts/Alerts'
+//  "homepage": "https://github.com/Pavel07-chyden/cards-react",
+
+
 
 export const App: FC = () => {
     return (
