@@ -2,7 +2,7 @@
   "name": "cards-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Pavel07-chyden/cards-react",
+  "homepage": "https://Pavel07-chyden.gitHub.io/cards-react",
   "dependencies": {
     "@storybook/react-native": "^5.3.25",
     "@testing-library/jest-dom": "^5.11.4",
