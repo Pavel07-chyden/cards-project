@@ -10,7 +10,6 @@ type CardsCountRangeProps = {
     maxCardsCount: number
     currentCardsCount: number[]
 }
-// Диапазон Количества карт
 export const CardsCountRange: FC<CardsCountRangeProps> = ({ minCardsCount, maxCardsCount, currentCardsCount }) => {
     const dispatch = useDispatch()
     const [rangeValues, setRangeValues] = useState([minCardsCount, maxCardsCount])
