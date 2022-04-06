@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const developmentMode = false
 
 export const instance = axios.create({
-    baseURL: developmentMode ? process.env.REACT_APP_DEVELOPMENT_MODE_BASE_URL : process.env.REACT_APP_BASE_URL,
+
+    baseURL: developmentMode ? 'http://localhost:7542/2.0' : 'https://neko-back.herokuapp.com/2.0',
     withCredentials: true
 })

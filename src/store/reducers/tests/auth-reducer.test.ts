@@ -1,13 +1,11 @@
 import {
-  AuthInitialState,
-  authReducer,
-  setEmailRecovery,
-  setIsLoggedIn,
-  setRegistrationSuccess,
-  setSendEmailSuccess,
-  setSuccessPassword,
-  setUsersInfo,
-} from '../auth-reducer';
+    AuthInitialState,
+    authReducer,
+    setEmailRecovery,
+    setIsLoggedIn,
+    setRegistrationSuccess, setSendEmailSuccess,
+    setSuccessPassword, setUsersInfo
+} from '../auth-reducer'
 
 
 let startState: AuthInitialState

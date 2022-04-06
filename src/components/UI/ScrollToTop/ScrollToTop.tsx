@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
-import { Button } from '../Button/Button';
-import s from './ScrollToTop.module.css';
+import {FC, useEffect, useState} from 'react'
+import {Button} from '../Button/Button'
+import s from './ScrollToTop.module.css'
 
 export const ScrollToTop: FC = () => {
     const [visible, setVisible] = useState(false)
@@ -19,7 +19,6 @@ export const ScrollToTop: FC = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', toggleVisible)
-        return () => window.removeEventListener('scroll', toggleVisible)
     }, [])
 
     return <>{visible && <Button className={s.scrollButton} onClick={scrollToTop}>Up</Button>}</>

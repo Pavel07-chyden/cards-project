@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react'
 
 export const useModal = (openInit: boolean = false) => {
     const [isOpen, setIsOpen] = useState(openInit)
@@ -9,6 +9,10 @@ export const useModal = (openInit: boolean = false) => {
 
     const onClose = () => {
         setIsOpen(false)
+    }
+
+    const onModalToggle = () => {
+        setIsOpen((prev) => !prev)
     }
 
     const onToggle = () => {

@@ -1,5 +1,5 @@
-import React, { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
-import s from './Checkbox.module.css';
+import React, { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes } from 'react'
+import s from './Checkbox.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -29,9 +29,9 @@ export const Checkbox: FC<CheckboxProps> = props => {
     return (
         <label className={s.label}>
             <input type={'checkbox'}
-                   onChange={onChangeCallback}
-                   className={classNames}
-                   {...restProps}/>
+                onChange={onChangeCallback}
+                className={classNames}
+                {...restProps} />
             {children && <span>{children}</span>}
         </label>
     )

@@ -1,4 +1,8 @@
+/* :root {
+    --primary: yellow;
+} */
 s.default {
+    /* --primary: red; */
     background-color: var(--primary);
 }
 

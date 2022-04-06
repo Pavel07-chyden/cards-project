@@ -1,5 +1,5 @@
-import { instance } from './axios-instance';
-import { AxiosResponse } from 'axios';
+import {instance} from './axios-instance'
+import {AxiosResponse} from 'axios'
 
 export type Card = {
     answer: string
@@ -80,6 +80,7 @@ export type GradeResponse = {
 }
 
 export const cardsAPI = {
+    // с server 
     getCards: (payload?: GetCardsQueryParams) => instance
         .get<CardsResponse>('/cards/card', {params: payload}),
 
@@ -91,7 +92,7 @@ export const cardsAPI = {
 
     updateCard: (payload: UpdateCardData) => instance
         .put<UpdateCardData, AxiosResponse<Card>>('/cards/card', payload),
-
+    /// запрос карточки данной колоды по id 
     grade: (payload: GradeData) => instance
         .put<GradeData, AxiosResponse<GradeResponse>>('/cards/grade', payload)
 }

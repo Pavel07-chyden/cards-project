@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
-import { Input } from '../Input/Input';
-import s from './EditableElement.module.css';
+import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
+import { Input } from '../Input/Input'
+import s from './EditableElement.module.css'
 
 type EditableElementProps = {
     defaultValue: string
@@ -8,7 +8,7 @@ type EditableElementProps = {
 }
 
 export const EditableElement: FC<EditableElementProps> = props => {
-    const {onEditHandler, defaultValue, children} = props
+    const { onEditHandler, defaultValue, children } = props
     const [value, setValue] = useState(defaultValue)
     const [editMode, setEditMode] = useState(false)
 
@@ -28,10 +28,10 @@ export const EditableElement: FC<EditableElementProps> = props => {
     return (
         editMode
             ? <Input value={value}
-                     onBlur={turnOffEditMode}
-                     onChange={onChangeHandler}
-                     onKeyPress={onKeyPressHandler}
-                     autoFocus/>
+                onBlur={turnOffEditMode}
+                onChange={onChangeHandler}
+                onKeyPress={onKeyPressHandler}
+                autoFocus />
             : <div onDoubleClick={turnOnEditMode} className={s.element}>{children}</div>
     )
 }

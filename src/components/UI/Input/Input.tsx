@@ -1,6 +1,6 @@
-import React, { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, KeyboardEvent, useState } from 'react';
-import s from './Input.module.css';
-import { EyeIcon } from '../../Icons/EyeIcon';
+import React, { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, KeyboardEvent, useState } from 'react'
+import s from './Input.module.css'
+import { EyeIcon } from '../../Icons/EyeIcon'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -44,12 +44,12 @@ export const Input: FC<InputTextProps> = props => {
     return (
         <div className={s.container}>
             <input type={password && isPassword ? 'text' : type}
-                   onChange={onChangeCallback}
-                   onKeyPress={onKeyPressCallback}
-                   className={inputClassNames}
-                   placeholder={'Enter some text...'}
-                   {...restProps}/>
-            {password && <div className={s.eye} onClick={() => setIsPassword(!isPassword)}><EyeIcon/></div>}
+                onChange={onChangeCallback}
+                onKeyPress={onKeyPressCallback}
+                className={inputClassNames}
+                placeholder={'Enter some text...'}
+                {...restProps} />
+            {password && <div className={s.eye} onClick={() => setIsPassword(!isPassword)}><EyeIcon /></div>}
             {error && <span className={spanClassNames}>{error}</span>}
         </div>
     )

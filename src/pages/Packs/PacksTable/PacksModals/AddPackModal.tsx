@@ -1,21 +1,21 @@
-import React, { FC, useState } from 'react';
-import { Modal } from '../../../../components/UI/Modal/Modal';
-import { Input } from '../../../../components/UI/Input/Input';
-import { Checkbox } from '../../../../components/UI/Checkbox/Checkbox';
-import { Button } from '../../../../components/UI/Button/Button';
-import { useModal } from '../../../../hooks/useModal';
-import { useDispatch } from 'react-redux';
-import { createCardsPack } from '../../../../store/reducers/packs-reducer';
+import React, { FC, useState } from 'react'
+import { Modal } from '../../../../components/UI/Modal/Modal'
+import { Input } from '../../../../components/UI/Input/Input'
+import { Checkbox } from '../../../../components/UI/Checkbox/Checkbox'
+import { Button } from '../../../../components/UI/Button/Button'
+import { useModal } from '../../../../hooks/useModal'
+import { useDispatch } from 'react-redux'
+import { createCardsPack } from '../../../../store/reducers/packs-reducer'
 
 export const AddPackModal: FC = () => {
     const dispatch = useDispatch()
-    const {isOpen, onToggle} = useModal()
+    const { isOpen, onToggle } = useModal()
 
     const [name, setName] = useState('')
-    const [isPrivate, setIsPrivate] = useState(false)
+    const [isPrivate, setIsPrivate] = useState(true)
 
     const addPack = async () => {
-        await dispatch(createCardsPack({cardsPack: {name, private: isPrivate}}))
+        await dispatch(createCardsPack({ cardsPack: { name, private: isPrivate } }))
         onToggle()
         setName('')
     }
@@ -28,9 +28,9 @@ export const AddPackModal: FC = () => {
                 <label htmlFor={'packs-addPack'}>
                     New pack name
                     <Input id={'packs-addPack'}
-                           placeholder={'Enter new pack name...'}
-                           value={name}
-                           onChange={e => setName(e.currentTarget.value)}/>
+                        placeholder={'Enter new pack name...'}
+                        value={name}
+                        onChange={e => setName(e.currentTarget.value)} />
                 </label>
 
                 <Checkbox checked={isPrivate} onChange={e => setIsPrivate(e.currentTarget.checked)}>

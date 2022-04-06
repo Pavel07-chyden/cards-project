@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import s from '../Packs.module.css';
-import { Pagination } from '../../../components/UI/Pagination/Pagination';
-import { Select } from '../../../components/UI/Select/Select';
-import { setPacksCountOnPage, setPacksCurrentPage } from '../../../store/reducers/packs-reducer';
-import { useDispatch } from 'react-redux';
+import React, {FC} from 'react'
+import s from '../Packs.module.css'
+import {Pagination} from '../../../components/UI/Pagination/Pagination'
+import {Select} from '../../../components/UI/Select/Select'
+import {setPacksCountOnPage, setPacksCurrentPage} from '../../../store/reducers/packs-reducer'
+import {useDispatch} from 'react-redux'
 
 type PacksPaginationProps = {
     totalCount: number
@@ -11,7 +11,7 @@ type PacksPaginationProps = {
     currentPage: number
     countPerPage: number[]
 }
-
+//разбивка пакетов на страницы
 export const PacksPagination: FC<PacksPaginationProps> = props => {
     const {totalCount, pageCount, currentPage, countPerPage} = props
     const dispatch = useDispatch()

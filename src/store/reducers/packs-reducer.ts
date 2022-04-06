@@ -1,14 +1,15 @@
 import {
+    CardsPack,
     CardsPackResponse,
     DeleteCardsPackData,
     GetCardPacksQueryParams,
     NewCardsPackData,
     packsAPI,
-    UpdateCardsPackData,
-} from '../../api/packs-api';
-import { AppDispatch, RootState, ThunkType } from '../store';
-import { setAppIsLoading } from './app-reducer';
-import { errorsHandler } from '../../utils/errors';
+    UpdateCardsPackData
+} from '../../api/packs-api'
+import { AppDispatch, RootState, ThunkType } from '../store'
+import { setAppIsLoading } from './app-reducer'
+import { errorsHandler } from '../../utils/errors'
 
 enum PACKS_ACTIONS_TYPES {
     SET_CARD_PACKS = 'PACKS/SET_CARD_PACKS',
@@ -41,42 +42,43 @@ export type PacksInitialState = CardsPackResponse & {
 
 export const initialState: PacksInitialState = {
     cardPacks: [],
-    cardPacksTotalCount: 0,
-    minCardsCount: 0,
-    maxCardsCount: 0,
-    page: 1,
-    pageCount: 10,
-    privatePacks: false,
-    sortPacksMethod: undefined,
-    currentCardsCount: [0, 0],
+    cardPacksTotalCount: 0, //
+    minCardsCount: 0,//
+    maxCardsCount: 0,//
+    page: 1, //
+    pageCount: 10, //
+    privatePacks: false, //
+    sortPacksMethod: undefined, //
+    currentCardsCount: [0, 0], //
     countPerPage: [10, 25, 50]
 }
 
 export const packsReducer = (state = initialState, action: PacksActionsTypes): PacksInitialState => {
     switch (action.type) {
         case PACKS_ACTIONS_TYPES.SET_CARD_PACKS:
-            return {...state, ...action.payload}
+            return { ...state, ...action.payload }
 
         case PACKS_ACTIONS_TYPES.SET_PACKS_CURRENT_PAGE:
-            return {...state, page: action.payload.page}
+            return { ...state, page: action.payload.page }
 
         case PACKS_ACTIONS_TYPES.SET_PACKS_COUNT_ON_PAGE:
-            return {...state, pageCount: action.payload.count}
+            return { ...state, pageCount: action.payload.count }
 
         case PACKS_ACTIONS_TYPES.SET_MIN_MAX_CARDS_COUNT:
-            return {...state, minCardsCount: action.payload.values[0], maxCardsCount: action.payload.values[1]}
+            return { ...state, minCardsCount: action.payload.values[0], maxCardsCount: action.payload.values[1] }
 
         case PACKS_ACTIONS_TYPES.SET_PACKS_TOTAL_COUNT:
-            return {...state, cardPacksTotalCount: action.payload.count}
+            return { ...state, cardPacksTotalCount: action.payload.count }
 
         case PACKS_ACTIONS_TYPES.SET_PRIVATE_PACKS:
-            return {...state, privatePacks: action.payload.value}
+            return { ...state, privatePacks: action.payload.value }
 
         case PACKS_ACTIONS_TYPES.SET_SORT_CARD_PACKS_METHOD:
-            return {...state, sortPacksMethod: action.payload.sortCardPacksMethod, page: 1}
+            return { ...state, sortPacksMethod: action.payload.sortCardPacksMethod, page: 1 }
 
         case PACKS_ACTIONS_TYPES.SET_CURRENT_CARDS_COUNT:
-            return {...state, currentCardsCount: [...action.payload.values]}
+            console.log(action)
+            return { ...state, currentCardsCount: [...action.payload.values] }
 
         default:
             return state
@@ -121,6 +123,7 @@ export const setPrivatePacks = (payload: { value: boolean }) => ({
 export const setSortCardsPackMethod = (payload: { sortCardPacksMethod: string }) => ({
     type: PACKS_ACTIONS_TYPES.SET_SORT_CARD_PACKS_METHOD, payload
 } as const)
+
 
 export const fetchCardPacks = (payload?: GetCardPacksQueryParams) => async (dispatch: AppDispatch, getState: () => RootState) => {
     const packs = getState().packs

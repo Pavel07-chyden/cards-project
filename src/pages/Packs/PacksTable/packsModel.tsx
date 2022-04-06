@@ -1,14 +1,15 @@
-import { PATH } from '../../../routes/routes';
-import { Link } from 'react-router-dom';
-import { TableModel } from '../../../components/UI/Table/Table';
-import { CardsPack } from '../../../api/packs-api';
-import { Sort } from '../../../components/UI/Sort/Sort';
-import { AddPackModal } from './PacksModals/AddPackModal';
-import { UpdatePacksModal } from './PacksModals/UpdatePacksModal';
-import { DeletePackModal } from './PacksModals/DeletePackModal';
-import React from 'react';
+import {PATH} from '../../../routes/routes'
+import {Link} from 'react-router-dom'
+import {TableModel} from '../../../components/UI/Table/Table'
+import {CardsPack} from '../../../api/packs-api'
+import {Sort} from '../../../components/UI/Sort/Sort'
+import {AddPackModal} from './PacksModals/AddPackModal'
+import {UpdatePacksModal} from './PacksModals/UpdatePacksModal'
+import {DeletePackModal} from './PacksModals/DeletePackModal'
+import React from 'react'
 
 export const packsModel = (sort: (sort: string) => void, userID: string | undefined, sortMethod: string | undefined): TableModel[] => [
+    //модель упаковки
     {
         header: index =>
             <th key={'name-title-' + index}>
