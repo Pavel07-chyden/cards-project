@@ -28,7 +28,6 @@ export const Packs: FC = () => {
     const paginationScrollTopRef = useRef<HTMLHeadingElement>(null)
 
     useEffect(() => {
-
         if (isLoggedIn) {
             dispatch(fetchCardPacks())
         }

@@ -18,7 +18,6 @@ export const EditableElement: FC<EditableElementProps> = props => {
         setEditMode(false)
         onEditHandler(value)
     }
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value)
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {

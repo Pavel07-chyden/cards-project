@@ -7,12 +7,14 @@ import { store } from '../store/store'
 import { Alerts } from '../components/UI/Alerts/Alerts'
 import { ScrollToTop } from '../components/UI/ScrollToTop/ScrollToTop'
 
+// deploy 
+
 export const App: FC = () => {
     return (
         <HashRouter>
             <Provider store={store}>
                 <Alerts />
-                    <Header />
+                <Header />
                 <AppRouter />
                 <ScrollToTop />
             </Provider>
